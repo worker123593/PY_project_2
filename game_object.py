@@ -1,5 +1,4 @@
 import pygame
-from info import tile_width, tile_height, player_image
 import info
 
 
@@ -8,11 +7,11 @@ class Object(pygame.sprite.Sprite):
         super().__init__(info.all_sprites)
         self.name = 'Object'
         self.coord = self.x, self.y = x, y
-        self.image = player_image
-        self.rect = self.image.get_rect().move(tile_width * x + 15, tile_height * y + 5)
+        self.image = info.player_image
+        self.rect = self.image.get_rect().move(info.tile_width * x + 15, info.tile_height * y + 5)
 
     def overwriting_main_coord(self, x, y):
-        self.rect.x, self.rect.y = x * tile_width, y * tile_height
+        self.rect.x, self.rect.y = x * info.tile_width, y * info.tile_height
 
     def get_main_coord(self):
         return self.rect.x, self.rect.y

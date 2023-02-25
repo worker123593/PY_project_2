@@ -1,6 +1,5 @@
 import pygame
 from collections import deque
-from info import tile_width, tile_height, player_image, level_map
 import info
 
 
@@ -10,16 +9,16 @@ class Subject(pygame.sprite.Sprite):
         self.x, self.y = x, y
         self.a = []
         self.name = 'subject'
-        self.grid = level_map
+        self.grid = info.level_map
         self.graph = {}
         for y, row in enumerate(self.grid):
             for x, col in enumerate(row):
                 self.graph[(x, y)] = self.graph.get((x, y), []) + self.get_next_nodes(x, y)
-        self.image = player_image
-        self.rect = self.image.get_rect().move(tile_width * self.x + 15, tile_height * self.y + 5)
+        self.image = info.player_image
+        self.rect = self.image.get_rect().move(info.tile_width * self.x + 15, info.tile_height * self.y + 5)
 
     def overwriting_main_coord(self, x, y):
-        self.rect.x, self.rect.y = x * tile_width, y * tile_height
+        self.rect.x, self.rect.y = x * info.tile_width, y * info.tile_height
 
     def get_main_coord(self):
         return self.rect.x, self.rect.y
@@ -54,8 +53,8 @@ class Subject(pygame.sprite.Sprite):
         # rfrfz-nj abuyz
         if self.a:
             motion = self.a.pop(0)
-            self.rect.x -= (self.x - motion[0]) * tile_width
-            self.rect.y -= (self.y - motion[1]) * tile_height
+            self.rect.x -= (self.x - motion[0]) * info.tile_width
+            self.rect.y -= (self.y - motion[1]) * info.tile_height
             self.overwriting_coords(self.x - (self.x - motion[0]), self.y - (self.y - motion[1]))
 
     def moving(self, pos):

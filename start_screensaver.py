@@ -1,75 +1,75 @@
-from info import size, terminate, clock, FPS, screen, load_image
+import info
 import pygame
 
+from player import Player
+from settings import setting
+
 SSS_sprite_group = pygame.sprite.Group()
-ESS_sprite_group = pygame.sprite.Group()
+
+
+class Buttons(pygame.sprite.Sprite):
+    def __init__(self, x=0, y=0, h=0, w=0, color='cyan',  image='', name='board'):
+        super().__init__(SSS_sprite_group)
+        self.name = name
+        self.image = pygame.Surface(([h, w]))
+        self.image.fill(pygame.Color(color))
+        self.rect = self.image.get_rect().move(y, x)
+        font = pygame.font.Font(None, 30)
+        text_coord = 10
+        if image:
+            self.image.blit(info.load_image('warrior.png'), [10, 10])
+        if name != 'board':
+            line = name
+            string_rendered = font.render(line, 1, pygame.Color('white'))
+            intro_rect = string_rendered.get_rect()
+            intro_rect.top = text_coord
+            intro_rect.x = self.rect.w / 7 * 3
+            self.image.blit(string_rendered, intro_rect)
+
+    def action(self):
+        if self.name == 'exit':
+            info.terminate()
+        elif self.name == 'play':
+            return 1
+        elif self.name == 'setting':
+            setting()
 
 
 def start_screen():
-    intro_text = [""]
-    object_ = pygame.sprite.Sprite(SSS_sprite_group)
+    fon = pygame.transform.scale(info.load_image('fon.jpg'), info.size)
+    info.screen.blit(fon, (0, 0))
+    spos = [info.size[0] / 3, info.size[1] / 3]
+    a = {'board': [spos[1], spos[0], spos[0], 160],
+        'play': [spos[1] + 10, spos[0], spos[0], 40, 'grey'],
+        'setting': [spos[1] + 60, spos[0], spos[0], 40, 'grey'],
+        'exit': [spos[1] + 110, spos[0], spos[0], 40, 'grey']}
+    for i in a.keys():
+        Buttons(*a[i], name=i)
+        SSS_sprite_group.draw(info.screen)
 
-    object_.image = pygame.Surface(([30, 20]))
-    object_.image.fill(pygame.Color('red'))
-    object_.rect = object_.image.get_rect().move(200, 300)
-
-    setting = pygame.sprite.Sprite(SSS_sprite_group)
-    setting.image = load_image('setting.png')
-    setting.rect = setting.image.get_rect().move(10, 10)
-
-    fon = pygame.transform.scale(load_image('fon.jpg'), size)
-    screen.blit(fon, (0, 0))
-    font = pygame.font.Font(None, 30)
-    text_coord = 50
-    for line in intro_text:
-        string_rendered = font.render(line, 1, pygame.Color('white'))
-        intro_rect = string_rendered.get_rect()
-        text_coord += 10
-        intro_rect.top = text_coord
-        intro_rect.x = 10
-        text_coord += intro_rect.height
-        screen.blit(string_rendered, intro_rect)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                terminate()
+                info.terminate()
             elif event.type == pygame.VIDEORESIZE:
                 pass
-            elif event.type == pygame.KEYDOWN:
-                pass
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                for i in SSS_sprite_group:
+                    mouse_pos = event.pos
+                    if i.rect.collidepoint(mouse_pos):
+                        a = i.action()
+                        if a:
+                            info.player_group = pygame.sprite.Group()
+                            info.all_sprites = pygame.sprite.Group()
+                            return Player()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in SSS_sprite_group:
                     if i.rect.collidepoint(event.pos):
                         return
-        screen.blit(fon, (0, 0))
-        SSS_sprite_group.draw(screen)
+            elif event.type == pygame.VIDEORESIZE:
+                info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+
+        info.screen.blit(fon, (0, 0))
+        SSS_sprite_group.draw(info.screen)
         pygame.display.flip()
-        clock.tick(FPS)
-
-
-def exit_screen():
-    intro_text = ["game over"]
-
-    fon = pygame.transform.scale(load_image('death.png'), size)
-    screen.blit(fon, (0, 0))
-    font = pygame.font.Font(None, 30)
-    text_coord = 50
-    for line in intro_text:
-        string_rendered = font.render(line, 1, pygame.Color('white'))
-        intro_rect = string_rendered.get_rect()
-        text_coord += 10
-        intro_rect.top = text_coord
-        intro_rect.x = 10
-        text_coord += intro_rect.height
-        screen.blit(string_rendered, intro_rect)
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                terminate()
-            elif event.type == pygame.KEYDOWN or \
-                    event.type == pygame.MOUSEBUTTONDOWN:
-                start_screen()
-                return
-        pygame.display.flip()
-        clock.tick(FPS)
+        info.clock.tick(info.FPS)

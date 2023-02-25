@@ -3,7 +3,7 @@ import os
 import pygame
 
 
-size = width, height = 1300, 1000
+size = [1300, 1000]
 
 clock = pygame.time.Clock()
 FPS = 20

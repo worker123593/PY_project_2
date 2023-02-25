@@ -1,20 +1,19 @@
 import pygame
 import info
-from player import Player
 from start_screensaver import start_screen
 from exit_screensaver import exit_screen
-from info import screen, clock, FPS
 
 if __name__ == '__main__':
     pygame.init()
-    pygame.display.set_caption('1level')
-    player = Player()
-    start_screen()
+    pygame.display.set_caption('remake of pixel dungeon')
+    player = start_screen()
     f = False
     while True:
+        info.screen.fill(pygame.Color('black'))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                exit_screen()
+                player = exit_screen()
+
             elif event.type == pygame.MOUSEBUTTONUP:
                 f = False
                 if event.button == 4 and False:
@@ -31,13 +30,16 @@ if __name__ == '__main__':
                 if event.button == 3 and not f:
                     f = True
                     first_coord = event.pos
+
+            elif event.type == pygame.VIDEORESIZE:
+                info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+
             elif event.type == pygame.MOUSEMOTION and f:
                 change = [event.pos[0] - first_coord[0], event.pos[1] - first_coord[1]]
                 first_coord = event.pos
                 player.camera.mouse_updating(change)
         info.all_sprites.update()
-        screen.fill(pygame.Color('black'))
-        info.all_sprites.draw(screen)
-        info.player_group.draw(screen)
+        info.all_sprites.draw(info.screen)
+        info.player_group.draw(info.screen)
         pygame.display.flip()
-        clock.tick(FPS)
+        info.clock.tick(info.FPS)

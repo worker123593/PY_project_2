@@ -1,12 +1,11 @@
-from info import width, height, tile_height, tile_width
 import info
 import pygame
 
 
 class Camera:
     def __init__(self):
-        self.tile_width = tile_width
-        self.tile_height = tile_height
+        self.tile_width = info.tile_width
+        self.tile_height = info.tile_height
         self.dx = 0
         self.dy = 0
 
@@ -15,8 +14,8 @@ class Camera:
         obj.rect.y += self.dy
 
     def update(self, target):
-        self.dx = -(target.rect.x + target.rect.w // 2 - width // 2)
-        self.dy = -(target.rect.y + target.rect.h // 2 - height // 2)
+        self.dx = -(target.rect.x + target.rect.w // 2 - info.size[0] // 2)
+        self.dy = -(target.rect.y + target.rect.h // 2 - info.size[1] // 2)
         for sprite in info.all_sprites:
             self.apply(sprite)
 
@@ -38,6 +37,5 @@ class Camera:
         target.image = pygame.transform.scale(target.image, (target.rect.w, target.rect.h))
         target.rect.x -= a[0] - self.tile_width
         target.rect.y -= a[1] - self.tile_height
-        print(target.rect)
 
 

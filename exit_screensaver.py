@@ -1,59 +1,49 @@
-from info import size, terminate, clock, FPS, screen, load_image
+import info
 import pygame
+from start_screensaver import start_screen
 
-SSS_sprite_group = pygame.sprite.Group()
 ESS_sprite_group = pygame.sprite.Group()
 
 
-def start_screen():
-    intro_text = [""]
-    object_ = pygame.sprite.Sprite(SSS_sprite_group)
+class Buttons(pygame.sprite.Sprite):
+    def __init__(self, x=0, y=0, name='board', image=''):
+        super().__init__(ESS_sprite_group)
+        self.name = name
+        self.image = pygame.Surface(([100, 100]))
+        self.image.fill(pygame.Color('red'))
+        self.rect = self.image.get_rect().move(y, x)
+        font = pygame.font.Font(None, 30)
+        text_coord = 20
+        if image:
+            self.image.blit(info.load_image('warrior.png'), [10, 10])
+        if name != 'board':
+            line = name
+            string_rendered = font.render(line, 1, pygame.Color('white'))
+            intro_rect = string_rendered.get_rect()
+            text_coord += 10
+            intro_rect.top = text_coord
+            intro_rect.x = 10
+            text_coord += intro_rect.height
+            self.image.blit(string_rendered, intro_rect)
 
-    object_.image = pygame.Surface(([30, 20]))
-    object_.image.fill(pygame.Color('red'))
-    object_.rect = object_.image.get_rect().move(200, 300)
-
-    setting = pygame.sprite.Sprite(SSS_sprite_group)
-    setting.image = load_image('setting.png')
-    setting.rect = setting.image.get_rect().move(10, 10)
-
-    fon = pygame.transform.scale(load_image('fon.jpg'), size)
-    screen.blit(fon, (0, 0))
-    font = pygame.font.Font(None, 30)
-    text_coord = 50
-    for line in intro_text:
-        string_rendered = font.render(line, 1, pygame.Color('white'))
-        intro_rect = string_rendered.get_rect()
-        text_coord += 10
-        intro_rect.top = text_coord
-        intro_rect.x = 10
-        text_coord += intro_rect.height
-        screen.blit(string_rendered, intro_rect)
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                terminate()
-            elif event.type == pygame.VIDEORESIZE:
-                pass
-            elif event.type == pygame.KEYDOWN:
-                pass
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                for i in SSS_sprite_group:
-                    if i.rect.collidepoint(event.pos):
-                        return
-        screen.blit(fon, (0, 0))
-        SSS_sprite_group.draw(screen)
-        pygame.display.flip()
-        clock.tick(FPS)
+    def action(self):
+        if self.name == 'exit':
+            info.terminate()
+        elif self.name == 'menu':
+            return 1
 
 
 def exit_screen():
     intro_text = ["game over"]
-
-    fon = pygame.transform.scale(load_image('death.png'), size)
-    screen.blit(fon, (0, 0))
+    fon = pygame.transform.scale(info.load_image('death.png'), info.size)
+    info.screen.blit(fon, (0, 0))
     font = pygame.font.Font(None, 30)
     text_coord = 50
+
+    sprites_pos = [info.size[0] // 2, info.size[1] // 2]
+    board = Buttons(sprites_pos[0], sprites_pos[1])
+    menu = Buttons(sprites_pos[0] - 200, sprites_pos[1], name='menu')
+    exit = Buttons(sprites_pos[0], sprites_pos[1], name='exit')
     for line in intro_text:
         string_rendered = font.render(line, 1, pygame.Color('white'))
         intro_rect = string_rendered.get_rect()
@@ -61,15 +51,22 @@ def exit_screen():
         intro_rect.top = text_coord
         intro_rect.x = 10
         text_coord += intro_rect.height
-        screen.blit(string_rendered, intro_rect)
+        info.screen.blit(string_rendered, intro_rect)
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                terminate()
-            elif event.type == pygame.KEYDOWN or \
-                    event.type == pygame.MOUSEBUTTONDOWN:
-                start_screen()
-                return
+                info.terminate()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                for i in ESS_sprite_group:
+                    mouse_pos = event.pos
+                    if i.rect.collidepoint(mouse_pos):
+                        a = i.action()
+                        if a:
+                            return start_screen()
+            elif event.type == pygame.VIDEORESIZE:
+                info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+        info.screen.blit(fon, (0, 0))
+        ESS_sprite_group.draw(info.screen)
         pygame.display.flip()
-        clock.tick(FPS)
+        info.clock.tick(info.FPS)

@@ -1,12 +1,12 @@
-from info import tile_images, tile_width, tile_height
+import info
 from game_object import Object
 
 
 class Tile(Object):
     def __init__(self, tile_type, x, y):
         super().__init__(x, y)
-        self.image = tile_images[tile_type]
-        self.rect = self.image.get_rect().move(tile_width * x, tile_height * y)
+        self.image = info.tile_images[tile_type]
+        self.rect = self.image.get_rect().move(info.tile_width * x, info.tile_height * y)
         self.name = tile_type
 
 
