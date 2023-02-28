@@ -1,7 +1,5 @@
 import info
 from subject import Subject
-from camera import Camera
-from random import choice
 import pygame
 
 
@@ -14,12 +12,8 @@ class Rat(Subject):
         self.data_of_levels = {}
         self.overwriting_add_coord(x, y)
         self.overwriting_main_coord(x, y)
-        info.enemys_group.add(self)
 
+        info.enemys_group.add(self)
 
     def update(self):
         pass
-
-
-
-

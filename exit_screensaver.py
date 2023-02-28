@@ -3,7 +3,6 @@ import pygame
 from settings import setting
 from start_screensaver import start_screen
 
-
 ESS_sprite_group = pygame.sprite.Group()
 
 
@@ -34,6 +33,14 @@ class Buttons(pygame.sprite.Sprite):
             setting()
 
 
+def recreate_buttons():
+    global ESS_sprite_group
+    items = ['board', 'menu', 'setting', 'exit']
+    ESS_sprite_group = pygame.sprite.Group()
+    for i in items:
+        Buttons(name=i)
+
+
 def exit_screen():
     info.score -= 1
     if info.score > 0:
@@ -41,11 +48,10 @@ def exit_screen():
             w.write(str(info.score) + '\n')
     with open('data/score') as r:
         best_score = max(list(map(int, r.readlines())))
-    global ESS_sprite_group
     intro_text = ["game over", f'your score ' + str(info.score), 'the best score ' + str(best_score)]
     font = pygame.font.Font(None, 80)
     text_coord = 50
-    items = ['board', 'menu', 'setting', 'exit']
+
     text = []
     for line in intro_text:
         string_rendered = font.render(line, 1, pygame.Color('white'))
@@ -56,8 +62,7 @@ def exit_screen():
         text_coord += intro_rect.height
         text.append((string_rendered, intro_rect))
 
-    for i in items:
-        Buttons(name=i)
+    recreate_buttons()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -69,16 +74,12 @@ def exit_screen():
                         a = i.action()
                         if a:
                             return start_screen()
-                ESS_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
+                    recreate_buttons()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
                 for i in text:
                     i[1].x = info.size[0] // 2 - 180
-                ESS_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
+                recreate_buttons()
         fon = pygame.transform.scale(info.load_image('death.png'), info.size)
         info.screen.blit(fon, (0, 0))
         for i in text:

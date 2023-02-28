@@ -29,21 +29,23 @@ class Buttons(pygame.sprite.Sprite):
             return 1
 
 
-def setting():
+def recreate_buttons():
     global settings_sprite_group
     items = ['board', 'music', 'back']
+    settings_sprite_group = pygame.sprite.Group()
     for i in items:
         Buttons(name=i)
+
+
+def setting():
+    recreate_buttons()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 info.terminate()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
-                settings_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
-
+                recreate_buttons()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos
                 for i in settings_sprite_group:
@@ -54,9 +56,7 @@ def setting():
                 for i in settings_sprite_group:
                     if i.rect.collidepoint(event.pos):
                         return
-                ESS_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
+                recreate_buttons()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
         fon = pygame.transform.scale(info.load_image('fon.jpg'), info.size)

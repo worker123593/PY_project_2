@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="делал некий интерфейс" />
+    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="12">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exit_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/exit_screensaver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/rat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_screensaver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/subject.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +109,7 @@
       <method v="2" />
     </configuration>
     <configuration name="main (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ИП_по_программированию" />
+      <module name="ИП_по_программированию_2" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -108,7 +117,7 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../pythonProject" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../pythonProject/main.py" />
@@ -240,8 +249,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.start_screensaver" />
         <item itemvalue="Python.main (3)" />
+        <item itemvalue="Python.start_screensaver" />
         <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.main (1)" />
       </list>
@@ -270,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677563803517</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="сделал некий интерфейс2">
+      <created>1677563930241</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677563930241</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,7 +303,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start screen and setting" />
     <MESSAGE value="делал некий интерфейс" />
-    <option name="LAST_COMMIT_MESSAGE" value="делал некий интерфейс" />
+    <MESSAGE value="сделал некий интерфейс2" />
+    <option name="LAST_COMMIT_MESSAGE" value="сделал некий интерфейс2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -304,18 +321,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
-          <line>70</line>
+          <line>75</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
-          <line>13</line>
+          <line>12</line>
           <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/rat.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

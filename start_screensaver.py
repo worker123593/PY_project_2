@@ -34,20 +34,23 @@ class Buttons(pygame.sprite.Sprite):
             setting()
 
 
-def start_screen():
+def recreate_buttons():
     global SSS_sprite_group
     items = ['board', 'setting', 'play', 'exit']
+    SSS_sprite_group = pygame.sprite.Group()
     for i in items:
         Buttons(name=i)
+
+
+def start_screen():
+    recreate_buttons()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 info.terminate()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
-                SSS_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
+                recreate_buttons()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in SSS_sprite_group:
                     mouse_pos = event.pos
@@ -57,9 +60,7 @@ def start_screen():
                             info.player_group = pygame.sprite.Group()
                             info.all_sprites = pygame.sprite.Group()
                             return Player()
-                SSS_sprite_group = pygame.sprite.Group()
-                for i in items:
-                    Buttons(name=i)
+                recreate_buttons()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in SSS_sprite_group:
                     if i.rect.collidepoint(event.pos):

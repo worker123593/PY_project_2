@@ -11,7 +11,7 @@ class Subject(pygame.sprite.Sprite):
         self.health = 100
         self.damage = 10
         self.a = []
-        self.grid = info.load_level('map1.txt')
+        self.grid = info.load_level('map3.txt')
         self.graph = {}
         for y, row in enumerate(self.grid):
             for x, col in enumerate(row):
@@ -36,13 +36,13 @@ class Subject(pygame.sprite.Sprite):
         self.x, self.y = x, y
 
     def get_add_coord(self):
-        return (self.x, self.y)
+        return self.x, self.y
 
-    def get_next_nodes(self, x, y):
-        check_next_node = lambda x, y: True if 0 <= x < len(self.grid[0]) and 0 <= y < len(self.grid)\
-                                               and self.grid[y][x] != '1' else False
+    def get_next_nodes(self, dx, dy):
+        check_next_node = (lambda x, y: True if 0 <= x < len(self.grid[0]) and 0 <= y < len(
+            self.grid) and self.grid[y][x] != '1' else False)
         ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, 1], [-1, -1], [1, 1], [1, -1]
-        return [(x + dx, y + dy) for dx, dy in ways if check_next_node(x + dx, y + dy)]
+        return [(dx + x, dy + y) for x, y in ways if check_next_node(dx + x, dy + y)]
 
     def bfs(self, goal, graph):
         queue = deque([(self.x, self.y)])
@@ -73,10 +73,10 @@ class Subject(pygame.sprite.Sprite):
             self.a.append(path_segment)
             path_segment = visited[path_segment]
 
-    def dead_check(self):
+    def get_damage(self, damage):
+        self.health -= damage
         if self.health <= 0:
             info.subject_group.remove(self)
             info.all_sprites.remove(self)
-
-
-
+            if self.name == 'player':
+                pass

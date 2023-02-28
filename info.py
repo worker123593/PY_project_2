@@ -7,7 +7,7 @@ import pygame
 size = [1300, 1000]
 
 
-def level_num_generator(self):
+def level_num_generator():
     return choice(range(1, 8))
 
 
@@ -36,7 +36,7 @@ def terminate():
     sys.exit()
 
 
-def load_image(name, colorkey=None):
+def load_image(name):
     fullname = os.path.join('data', name)
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
