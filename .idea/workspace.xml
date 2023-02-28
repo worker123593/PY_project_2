@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="start screen and setting">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exit_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/exit_screensaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/rat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_screensaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/subject.py" afterDir="false" />
-    </list>
+    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="делал некий интерфейс" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -279,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677365439407</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="делал некий интерфейс">
+      <created>1677563803517</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677563803517</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,7 +286,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start screen and setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="start screen and setting" />
+    <MESSAGE value="делал некий интерфейс" />
+    <option name="LAST_COMMIT_MESSAGE" value="делал некий интерфейс" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,7 +304,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
-          <line>69</line>
+          <line>70</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
