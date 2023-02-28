@@ -3,11 +3,13 @@ import pygame
 
 
 class Camera:
-    def __init__(self):
+    def __init__(self, x=0, y=0):
         self.tile_width = info.tile_width
         self.tile_height = info.tile_height
-        self.dx = 0
-        self.dy = 0
+        self.dx = x
+        self.dy = y
+        for sprite in info.all_sprites:
+            self.apply(sprite)
 
     def apply(self, obj):
         obj.rect.x += self.dx
@@ -17,7 +19,8 @@ class Camera:
         self.dx = -(target.rect.x + target.rect.w // 2 - info.size[0] // 2)
         self.dy = -(target.rect.y + target.rect.h // 2 - info.size[1] // 2)
         for sprite in info.all_sprites:
-            self.apply(sprite)
+            if target.name != 'player':
+                self.apply(sprite)
 
     def mouse_updating(self, coord):
         self.dx = coord[0]

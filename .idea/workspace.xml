@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="start screen and setting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asd.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maps/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/maps/map4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exit_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/exit_screensaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_object.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/info.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/rat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_screensaver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/subject.py" afterDir="false" />
     </list>
@@ -154,8 +157,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="screensaver" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ИП_по_программированию" />
+    <configuration name="start_screensaver" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ИП_по_программированию_2" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -166,7 +169,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/screensaver.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_screensaver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -253,10 +256,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.start_screensaver" />
         <item itemvalue="Python.main (3)" />
         <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.screensaver" />
       </list>
     </recent_temporary>
   </component>
@@ -269,6 +272,14 @@
       <option name="presentableId" value="Default" />
       <updated>1667737765634</updated>
     </task>
+    <task id="LOCAL-00001" summary="start screen and setting">
+      <created>1677365439407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677365439407</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,6 +293,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start screen and setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="start screen and setting" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -292,25 +307,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/camera.py</url>
-          <line>28</line>
+          <line>31</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/player.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="42" />
+          <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/start_screensaver.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="44" />
+          <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/settings.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/rat.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

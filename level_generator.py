@@ -1,5 +1,6 @@
 import info
 from game_object import Object
+from rat import Rat
 
 
 class Tile(Object):
@@ -26,4 +27,9 @@ def generate_level(level):
                     player_pos = (x, y)
                 else:
                     Tile('stairs down', x, y)
+            elif level[y][x] == '@':
+                Tile('empty', x, y)
+                Rat(x, y)
+            else:
+                Tile('empty', x, y)
     return player_pos

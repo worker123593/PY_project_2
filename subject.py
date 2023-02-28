@@ -5,17 +5,26 @@ import info
 
 class Subject(pygame.sprite.Sprite):
     def __init__(self, x=0, y=0):
-        super().__init__(info.all_sprites)
+        super().__init__(info.subject_group, info.all_sprites)
         self.x, self.y = x, y
-        self.a = []
         self.name = 'subject'
-        self.grid = info.level_map
+        self.health = 100
+        self.damage = 10
+        self.a = []
+        self.grid = info.load_level('map1.txt')
         self.graph = {}
         for y, row in enumerate(self.grid):
             for x, col in enumerate(row):
                 self.graph[(x, y)] = self.graph.get((x, y), []) + self.get_next_nodes(x, y)
-        self.image = info.player_image
+        self.image = pygame.Surface(([50, 50]))
         self.rect = self.image.get_rect().move(info.tile_width * self.x + 15, info.tile_height * self.y + 5)
+
+    def creat_grid(self):
+        grid = info.load_level('map1.txt')
+        graph = {}
+        for y, row in enumerate(grid):
+            for x, col in enumerate(row):
+                graph[(x, y)] = graph.get((x, y), []) + self.get_next_nodes(x, y)
 
     def overwriting_main_coord(self, x, y):
         self.rect.x, self.rect.y = x * info.tile_width, y * info.tile_height
@@ -50,7 +59,6 @@ class Subject(pygame.sprite.Sprite):
         return visited
 
     def update(self):
-        # rfrfz-nj abuyz
         if self.a:
             motion = self.a.pop(0)
             self.rect.x -= (self.x - motion[0]) * info.tile_width
@@ -64,4 +72,11 @@ class Subject(pygame.sprite.Sprite):
         while path_segment in visited:
             self.a.append(path_segment)
             path_segment = visited[path_segment]
+
+    def dead_check(self):
+        if self.health <= 0:
+            info.subject_group.remove(self)
+            info.all_sprites.remove(self)
+
+
 

@@ -1,12 +1,34 @@
 import sys
 import os
-import pygame
+from random import choice
 
+import pygame
 
 size = [1300, 1000]
 
-clock = pygame.time.Clock()
-FPS = 20
+
+def level_num_generator(self):
+    return choice(range(1, 8))
+
+
+def sss_sprites():
+    return {'board': [size[1] / 3, size[0] / 3, size[0] / 3, 160, 'cyan'],
+            'play': [size[1] / 3 + 10, size[0] / 3, size[0] / 3, 40, 'grey'],
+            'setting': [size[1] / 3 + 60, size[0] / 3, size[0] / 3, 40, 'grey'],
+            'exit': [size[1] / 3 + 110, size[0] / 3, size[0] / 3, 40, 'grey']}
+
+
+def ess_sprites():
+    return {'board': [size[1] // 3, size[0] // 3, size[0] // 3, 160, 'cyan'],
+            'menu': [size[1] // 3 + 10, size[0] // 3, size[0] // 3, 40, 'grey'],
+            'setting': [size[1] // 3 + 60, size[0] // 3, size[0] // 3, 40, 'grey'],
+            'exit': [size[1] // 3 + 110, size[0] // 3, size[0] // 3, 40, 'grey']}
+
+
+def settings_sprites():
+    return {'board': [size[1] // 3, size[0] // 3, size[0] // 3, 160, 'cyan'],
+            'music': [size[1] // 3 + 10, size[0] // 3, size[0] // 3, 40, 'grey'],
+            'back': [size[1] // 3 + 70, size[0] // 3, size[0] // 3, 40, 'grey']}
 
 
 def terminate():
@@ -20,6 +42,7 @@ def load_image(name, colorkey=None):
         print(f"Файл с изображением '{fullname}' не найден")
         sys.exit()
     image = pygame.image.load(fullname)
+
     return image
 
 
@@ -38,22 +61,24 @@ def load_level(filename):
     return list(map(lambda x: x.ljust(max_width, '0'), level_map))
 
 
-
 screen = pygame.display.set_mode(size, pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
 all_sprites = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
+subject_group = pygame.sprite.Group()
+enemys_group = pygame.sprite.Group()
+
 tile_images = {
     'wall': load_image('wall.png'),
     'stairs up': load_image('stairs_up.png'),
     'stairs down': load_image('stairs_down.png'),
-    'empty': load_image('floor.png'),
-}
-#mob_images = {
+    'empty': load_image('floor.png')}
+# mob_images = {
 #    'rat': load_image('rat.png'),
 #    'crab': load_image('crab.png'),
-#    'gnoll': load_image('gnoll.png')
-#}
+#    'gnoll': load_image('gnoll.png')}
 player_image = load_image('warrior.png')
 tile_width = tile_height = 50
-level_map = load_level('map1.txt')
 
+clock = pygame.time.Clock()
+FPS = 20
+score = 0
