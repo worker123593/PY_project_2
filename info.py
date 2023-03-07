@@ -5,6 +5,28 @@ import pygame
 
 size = [1300, 1000]
 maps = {}
+screen = pygame.display.set_mode(size, pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
+m = True
+
+
+def load_image(name):
+    fullname = os.path.join('data', name)
+    if not os.path.isfile(fullname):
+        print(f"Файл с изображением '{fullname}' не найден")
+        sys.exit()
+    image = pygame.image.load(fullname)
+    return image
+
+
+tile_images = {
+    'wall': load_image('wall.png'),
+    'stairs up': load_image('stairs_up.png'),
+    'stairs down': load_image('stairs_down.png'),
+    'empty': load_image('floor.png')}
+player_image = load_image('warrior.png')
+tile_width = tile_height = 50
+clock = pygame.time.Clock()
+FPS = 20
 
 
 def fs(num):
@@ -44,15 +66,6 @@ def terminate():
     sys.exit()
 
 
-def load_image(name):
-    fullname = os.path.join('data', name)
-    if not os.path.isfile(fullname):
-        print(f"Файл с изображением '{fullname}' не найден")
-        sys.exit()
-    image = pygame.image.load(fullname)
-    return image
-
-
 def load_level(filename):
     filename = os.path.join('maps', filename)
     filename = os.path.join('data', filename)
@@ -68,40 +81,25 @@ def load_level(filename):
     return list(map(lambda x: x.ljust(max_width, '0'), level_map))
 
 
-screen = pygame.display.set_mode(size, pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
 all_sprites = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
 subject_group = pygame.sprite.Group()
 enemys_group = pygame.sprite.Group()
-tile_images = {
-    'wall': load_image('wall.png'),
-    'stairs up': load_image('stairs_up.png'),
-    'stairs down': load_image('stairs_down.png'),
-    'empty': load_image('floor.png')}
-# mob_images = {
-#    'rat': load_image('rat.png'),
-#    'crab': load_image('crab.png'),
-#    'gnoll': load_image('gnoll.png')}
-player_image = load_image('warrior.png')
-tile_width = tile_height = 50
-clock = pygame.time.Clock()
-FPS = 20
 score = 0
 music = True
 grid = None
-retry_path = False
+num_of_level = 1
 
 
 def reset_settings():
-    global tile_width, tile_height, score, act, all_sprites, player_group, subject_group, enemys_group, maps
+    global tile_width, tile_height, score, all_sprites, player_group, subject_group, enemys_group, maps,\
+        grid, num_of_level
     tile_width = tile_height = 50
     score = 0
-    act = False
     all_sprites = pygame.sprite.Group()
     player_group = pygame.sprite.Group()
     subject_group = pygame.sprite.Group()
     enemys_group = pygame.sprite.Group()
     maps = {}
-
-
-
+    grid = None
+    num_of_level = 1

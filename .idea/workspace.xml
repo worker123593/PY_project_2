@@ -6,19 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="исправил от ошибок, вроде">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/color_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/color_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/event_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/freetype_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/freetype_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/mask_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/mask_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/surface_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/site-packages/pygame/tests/surface_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/box.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/maps/map4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/setting.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/exit_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/exit_screensaver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
@@ -42,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="developer" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +47,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HApVVsmlz3NB7YEk5htBoFkl9X" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -342,7 +341,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/camera.py</url>
-          <line>31</line>
+          <line>30</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

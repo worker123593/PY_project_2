@@ -19,8 +19,7 @@ class Camera:
         self.dx = -(target.rect.x + target.rect.w // 2 - info.size[0] // 2)
         self.dy = -(target.rect.y + target.rect.h // 2 - info.size[1] // 2)
         for sprite in info.all_sprites:
-            if target.name != 'player':
-                self.apply(sprite)
+            self.apply(sprite)
 
     def mouse_updating(self, coord):
         self.dx = coord[0]
@@ -40,5 +39,3 @@ class Camera:
         target.image = pygame.transform.scale(target.image, (target.rect.w, target.rect.h))
         target.rect.x -= a[0] - self.tile_width
         target.rect.y -= a[1] - self.tile_height
-
-

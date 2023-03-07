@@ -1,5 +1,3 @@
-from pprint import pprint
-
 import pygame
 from collections import deque
 import info
@@ -8,7 +6,6 @@ import info
 class Subject(pygame.sprite.Sprite):
     def __init__(self, x=0, y=0):
         super().__init__(info.subject_group, info.all_sprites)
-        self.num_of_level = 1
         self.itr_name = 'p'
         self.graph = None
         self.x, self.y = x, y
@@ -22,7 +19,7 @@ class Subject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect().move(info.tile_width * self.x + 15, info.tile_height * self.y + 5)
 
     def recreate_grid(self):
-        info.grid = self.f(self.num_of_level)
+        info.grid = self.f(info.num_of_level)
         self.graph = {}
         for y, row in enumerate(info.grid):
             for x, col in enumerate(row):
@@ -30,6 +27,17 @@ class Subject(pygame.sprite.Sprite):
 
     def overwriting_main_coord(self, x, y):
         self.rect.x, self.rect.y = x * info.tile_width, y * info.tile_height
+
+    def f(self, num):
+        if num not in info.maps:
+            info.maps[num] = info.load_level(f'map{info.choice(range(1, 8))}.txt')
+        return info.maps[num]
+
+    def get_next_nodes(self, dx, dy):
+        check_next_node = (lambda x, y: 0 <= x < len(info.grid[0]) and 0 <= y < len(
+            info.grid) and info.grid[y][x] not in ['1'])
+        ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, 1], [-1, -1], [1, 1], [1, -1]
+        return [(dx + x, dy + y) for x, y in ways if check_next_node(dx + x, dy + y)]
 
     def get_main_coord(self):
         return self.rect.x, self.rect.y
@@ -39,12 +47,6 @@ class Subject(pygame.sprite.Sprite):
 
     def get_add_coord(self):
         return self.x, self.y
-
-    def get_next_nodes(self, dx, dy):
-        check_next_node = (lambda x, y: 0 <= x < len(info.grid[0]) and 0 <= y < len(
-            info.grid) and info.grid[y][x] not in ['1'])
-        ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, 1], [-1, -1], [1, 1], [1, -1]
-        return [(dx + x, dy + y) for x, y in ways if check_next_node(dx + x, dy + y)]
 
     def bfs(self, goal, graph):
         queue = deque([(self.x, self.y)])
@@ -82,20 +84,3 @@ class Subject(pygame.sprite.Sprite):
             info.all_sprites.remove(self)
             if self.name == 'player':
                 pass
-
-    def f(self, num):
-        if num not in info.maps:
-            info.maps[num] = info.load_level(f'map{info.choice(range(1, 8))}.txt')
-        return info.maps[num]
-
-    def change_name_of_grid(self):
-        y_pos_grid = list(info.maps[self.num_of_level][self.y])
-        if y_pos_grid[self.x] == self.itr_name:
-            y_pos_grid[self.x] = self.name_of_floor
-        else:
-            self.name_of_floor = y_pos_grid[self.x]
-            y_pos_grid[self.x] = self.itr_name
-        info.maps[self.num_of_level][self.y] = ''.join(y_pos_grid)
-        self.recreate_grid()
-
-

@@ -44,7 +44,6 @@ def recreate_buttons():
 def start_screen():
     recreate_buttons()
     while True:
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 info.terminate()

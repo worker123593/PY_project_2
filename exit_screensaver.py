@@ -76,7 +76,7 @@ def exit_screen():
                         if a:
                             start_screen()
                             return
-                    # recreate_buttons()
+                    recreate_buttons()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
                 for i in text:
@@ -84,7 +84,7 @@ def exit_screen():
                 recreate_buttons()
         fon = pygame.transform.scale(info.load_image('death.png'), info.size)
         info.screen.blit(fon, (0, 0))
-
+        info.reset_settings()
         for i in text:
             info.screen.blit(*i)
         ESS_sprite_group.draw(info.screen)

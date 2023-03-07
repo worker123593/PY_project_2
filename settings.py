@@ -24,10 +24,12 @@ class Buttons(pygame.sprite.Sprite):
 
     def action(self):
         if self.name == 'music':
-            if info.music:
-                info.music = False
+            if info.m:
+                info.m = False
+                info.music.stop()
             else:
-                info.music = True
+                info.m = True
+                info.music.play(-1)
         if self.name == 'back':
             return 1
 
@@ -67,4 +69,3 @@ def setting():
         settings_sprite_group.draw(info.screen)
         pygame.display.flip()
         info.clock.tick(info.FPS)
-
