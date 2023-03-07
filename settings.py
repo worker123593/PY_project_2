@@ -7,7 +7,7 @@ settings_sprite_group = pygame.sprite.Group()
 class Buttons(pygame.sprite.Sprite):
     def __init__(self, name='board'):
         super().__init__(settings_sprite_group)
-        inf = info.settings_sprites()[name]
+        inf = info.settings_sprites(name)
         self.name = name
         self.image = pygame.Surface(([inf[2], inf[3]]))
         self.image.fill(pygame.Color(inf[4]))
@@ -24,7 +24,10 @@ class Buttons(pygame.sprite.Sprite):
 
     def action(self):
         if self.name == 'music':
-            info.music = False
+            if info.music:
+                info.music = False
+            else:
+                info.music = True
         if self.name == 'back':
             return 1
 
@@ -64,3 +67,4 @@ def setting():
         settings_sprite_group.draw(info.screen)
         pygame.display.flip()
         info.clock.tick(info.FPS)
+

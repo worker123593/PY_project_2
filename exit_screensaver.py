@@ -3,13 +3,14 @@ import pygame
 from settings import setting
 from start_screensaver import start_screen
 
+
 ESS_sprite_group = pygame.sprite.Group()
 
 
 class Buttons(pygame.sprite.Sprite):
     def __init__(self, name='board'):
         super().__init__(ESS_sprite_group)
-        inf = info.ess_sprites()[name]
+        inf = info.ess_sprites(name)
         self.name = name
         self.image = pygame.Surface(([inf[2], inf[3]]))
         self.image.fill(pygame.Color(inf[4]))
@@ -73,8 +74,9 @@ def exit_screen():
                     if i.rect.collidepoint(mouse_pos):
                         a = i.action()
                         if a:
-                            return start_screen()
-                    recreate_buttons()
+                            start_screen()
+                            return
+                    # recreate_buttons()
             elif event.type == pygame.VIDEORESIZE:
                 info.size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
                 for i in text:
@@ -82,6 +84,7 @@ def exit_screen():
                 recreate_buttons()
         fon = pygame.transform.scale(info.load_image('death.png'), info.size)
         info.screen.blit(fon, (0, 0))
+
         for i in text:
             info.screen.blit(*i)
         ESS_sprite_group.draw(info.screen)

@@ -1,7 +1,6 @@
 import info
 import pygame
 
-from player import Player
 from settings import setting
 
 SSS_sprite_group = pygame.sprite.Group()
@@ -10,7 +9,7 @@ SSS_sprite_group = pygame.sprite.Group()
 class Buttons(pygame.sprite.Sprite):
     def __init__(self, name='board'):
         super().__init__(SSS_sprite_group)
-        inf = info.sss_sprites()[name]
+        inf = info.sss_sprites(name)
         self.name = name
         self.image = pygame.Surface(([inf[2], inf[3]]))
         self.image.fill(pygame.Color(inf[4]))
@@ -45,6 +44,7 @@ def recreate_buttons():
 def start_screen():
     recreate_buttons()
     while True:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 info.terminate()
@@ -53,18 +53,11 @@ def start_screen():
                 recreate_buttons()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in SSS_sprite_group:
-                    mouse_pos = event.pos
-                    if i.rect.collidepoint(mouse_pos):
-                        a = i.action()
-                        if a:
-                            info.player_group = pygame.sprite.Group()
-                            info.all_sprites = pygame.sprite.Group()
-                            return Player()
-                recreate_buttons()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                for i in SSS_sprite_group:
                     if i.rect.collidepoint(event.pos):
-                        return
+                        if i.action():
+                            # info.reset_settings()
+                            return
+                recreate_buttons()
         fon = pygame.transform.scale(info.load_image('fon.jpg'), info.size)
         info.screen.blit(fon, (0, 0))
         SSS_sprite_group.draw(info.screen)

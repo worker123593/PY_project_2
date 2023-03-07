@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import pygame
 from collections import deque
 import info
@@ -6,25 +8,25 @@ import info
 class Subject(pygame.sprite.Sprite):
     def __init__(self, x=0, y=0):
         super().__init__(info.subject_group, info.all_sprites)
+        self.num_of_level = 1
+        self.itr_name = 'p'
+        self.graph = None
         self.x, self.y = x, y
+        self.name_of_floor = '0'
         self.name = 'subject'
         self.health = 100
         self.damage = 10
-        self.a = []
-        self.grid = info.load_level('map3.txt')
-        self.graph = {}
-        for y, row in enumerate(self.grid):
-            for x, col in enumerate(row):
-                self.graph[(x, y)] = self.graph.get((x, y), []) + self.get_next_nodes(x, y)
+        self.path = []
+        self.recreate_grid()
         self.image = pygame.Surface(([50, 50]))
         self.rect = self.image.get_rect().move(info.tile_width * self.x + 15, info.tile_height * self.y + 5)
 
-    def creat_grid(self):
-        grid = info.load_level('map1.txt')
-        graph = {}
-        for y, row in enumerate(grid):
+    def recreate_grid(self):
+        info.grid = self.f(self.num_of_level)
+        self.graph = {}
+        for y, row in enumerate(info.grid):
             for x, col in enumerate(row):
-                graph[(x, y)] = graph.get((x, y), []) + self.get_next_nodes(x, y)
+                self.graph[(x, y)] = self.graph.get((x, y), []) + self.get_next_nodes(x, y)
 
     def overwriting_main_coord(self, x, y):
         self.rect.x, self.rect.y = x * info.tile_width, y * info.tile_height
@@ -39,8 +41,8 @@ class Subject(pygame.sprite.Sprite):
         return self.x, self.y
 
     def get_next_nodes(self, dx, dy):
-        check_next_node = (lambda x, y: True if 0 <= x < len(self.grid[0]) and 0 <= y < len(
-            self.grid) and self.grid[y][x] != '1' else False)
+        check_next_node = (lambda x, y: 0 <= x < len(info.grid[0]) and 0 <= y < len(
+            info.grid) and info.grid[y][x] not in ['1'])
         ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, 1], [-1, -1], [1, 1], [1, -1]
         return [(dx + x, dy + y) for x, y in ways if check_next_node(dx + x, dy + y)]
 
@@ -59,18 +61,18 @@ class Subject(pygame.sprite.Sprite):
         return visited
 
     def update(self):
-        if self.a:
-            motion = self.a.pop(0)
+        if self.path:
+            motion = self.path.pop(0)
             self.rect.x -= (self.x - motion[0]) * info.tile_width
             self.rect.y -= (self.y - motion[1]) * info.tile_height
             self.overwriting_coords(self.x - (self.x - motion[0]), self.y - (self.y - motion[1]))
 
     def moving(self, pos):
         visited = self.bfs(pos, self.graph)
-        self.a = []
+        self.path = []
         path_head, path_segment = self.get_add_coord(), pos
-        while path_segment in visited:
-            self.a.append(path_segment)
+        while path_segment in visited and visited[path_segment]:
+            self.path.append(path_segment)
             path_segment = visited[path_segment]
 
     def get_damage(self, damage):
@@ -80,3 +82,20 @@ class Subject(pygame.sprite.Sprite):
             info.all_sprites.remove(self)
             if self.name == 'player':
                 pass
+
+    def f(self, num):
+        if num not in info.maps:
+            info.maps[num] = info.load_level(f'map{info.choice(range(1, 8))}.txt')
+        return info.maps[num]
+
+    def change_name_of_grid(self):
+        y_pos_grid = list(info.maps[self.num_of_level][self.y])
+        if y_pos_grid[self.x] == self.itr_name:
+            y_pos_grid[self.x] = self.name_of_floor
+        else:
+            self.name_of_floor = y_pos_grid[self.x]
+            y_pos_grid[self.x] = self.itr_name
+        info.maps[self.num_of_level][self.y] = ''.join(y_pos_grid)
+        self.recreate_grid()
+
+

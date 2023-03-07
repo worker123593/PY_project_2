@@ -1,34 +1,42 @@
 import sys
 import os
 from random import choice
-
 import pygame
 
 size = [1300, 1000]
+maps = {}
 
 
-def level_num_generator():
-    return choice(range(1, 8))
+def fs(num):
+    if num not in maps:
+        maps[num] = load_level(f'map{choice(range(1, 8))}.txt')
+    return maps[num]
 
 
-def sss_sprites():
+def sss_sprites(name):
     return {'board': [size[1] / 3, size[0] / 3, size[0] / 3, 160, 'cyan'],
             'play': [size[1] / 3 + 10, size[0] / 3, size[0] / 3, 40, 'grey'],
             'setting': [size[1] / 3 + 60, size[0] / 3, size[0] / 3, 40, 'grey'],
-            'exit': [size[1] / 3 + 110, size[0] / 3, size[0] / 3, 40, 'grey']}
+            'exit': [size[1] / 3 + 110, size[0] / 3, size[0] / 3, 40, 'grey']}[name]
 
 
-def ess_sprites():
+def ess_sprites(name):
     return {'board': [size[1] // 3, size[0] // 3, size[0] // 3, 160, 'cyan'],
             'menu': [size[1] // 3 + 10, size[0] // 3, size[0] // 3, 40, 'grey'],
             'setting': [size[1] // 3 + 60, size[0] // 3, size[0] // 3, 40, 'grey'],
-            'exit': [size[1] // 3 + 110, size[0] // 3, size[0] // 3, 40, 'grey']}
+            'exit': [size[1] // 3 + 110, size[0] // 3, size[0] // 3, 40, 'grey']}[name]
 
 
-def settings_sprites():
+def settings_sprites(name):
     return {'board': [size[1] // 3, size[0] // 3, size[0] // 3, 160, 'cyan'],
             'music': [size[1] // 3 + 10, size[0] // 3, size[0] // 3, 40, 'grey'],
-            'back': [size[1] // 3 + 70, size[0] // 3, size[0] // 3, 40, 'grey']}
+            'back': [size[1] // 3 + 70, size[0] // 3, size[0] // 3, 40, 'grey']}[name]
+
+
+def interface_sprites(name):
+    return {'board': [size[1] // 3, size[0] // 3, size[0] // 3, 160, 'cyan'],
+            'music': [size[1] // 3 + 10, size[0] // 3, size[0] // 3, 40, 'grey'],
+            'back': [size[1] // 3 + 70, size[0] // 3, size[0] // 3, 40, 'grey']}[name]
 
 
 def terminate():
@@ -42,7 +50,6 @@ def load_image(name):
         print(f"Файл с изображением '{fullname}' не найден")
         sys.exit()
     image = pygame.image.load(fullname)
-
     return image
 
 
@@ -66,7 +73,6 @@ all_sprites = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
 subject_group = pygame.sprite.Group()
 enemys_group = pygame.sprite.Group()
-
 tile_images = {
     'wall': load_image('wall.png'),
     'stairs up': load_image('stairs_up.png'),
@@ -78,7 +84,24 @@ tile_images = {
 #    'gnoll': load_image('gnoll.png')}
 player_image = load_image('warrior.png')
 tile_width = tile_height = 50
-
 clock = pygame.time.Clock()
 FPS = 20
 score = 0
+music = True
+grid = None
+retry_path = False
+
+
+def reset_settings():
+    global tile_width, tile_height, score, act, all_sprites, player_group, subject_group, enemys_group, maps
+    tile_width = tile_height = 50
+    score = 0
+    act = False
+    all_sprites = pygame.sprite.Group()
+    player_group = pygame.sprite.Group()
+    subject_group = pygame.sprite.Group()
+    enemys_group = pygame.sprite.Group()
+    maps = {}
+
+
+
