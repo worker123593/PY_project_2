@@ -8,7 +8,7 @@ ESS_sprite_group = pygame.sprite.Group()
 
 
 class Buttons(pygame.sprite.Sprite):
-    '''кнопки окончания игры и их функции'''
+    """кнопки окончания игры и их функции"""
     def __init__(self, name='board'):
         super().__init__(ESS_sprite_group)
         inf = info.ess_sprites(name)

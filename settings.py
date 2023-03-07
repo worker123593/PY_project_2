@@ -43,7 +43,7 @@ def recreate_buttons():
 
 
 def setting():
-    '''включение и выключение музыки'''
+    """включение и выключение музыки"""
     recreate_buttons()
     while True:
         for event in pygame.event.get():

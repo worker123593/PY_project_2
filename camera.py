@@ -3,7 +3,7 @@ import pygame
 
 
 class Camera:
-    '''камера и все ее функции'''
+    """камера и все ее функции"""
     def __init__(self, x=0, y=0):
         self.tile_width = info.tile_width
         self.tile_height = info.tile_height

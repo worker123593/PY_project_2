@@ -3,6 +3,7 @@ import info
 
 
 class Object(pygame.sprite.Sprite):
+    """класс объектов"""
     def __init__(self, x=0, y=0):
         super().__init__(info.all_sprites)
         self.name = 'Object'

@@ -4,7 +4,7 @@ from rat import Rat
 
 
 class Tile(Object):
-    '''создание окружения'''
+    """создание окружения"""
     def __init__(self, tile_type, x, y):
         super().__init__(x, y)
         self.image = info.tile_images[tile_type]
