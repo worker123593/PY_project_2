@@ -7,6 +7,7 @@ SSS_sprite_group = pygame.sprite.Group()
 
 
 class Buttons(pygame.sprite.Sprite):
+    '''начальный экран и функции его кнопок'''
     def __init__(self, name='board'):
         super().__init__(SSS_sprite_group)
         inf = info.sss_sprites(name)
