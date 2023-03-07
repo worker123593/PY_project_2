@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="исправил от ошибок, вроде">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bomb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/map4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/map4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/setting.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exit_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/exit_screensaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/rat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_screensaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_screensaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/subject.py" afterDir="false" />
-    </list>
+    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="устранил большинство ошибок + добавил музыку" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -310,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677617596157</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="устранил большинство ошибок + добавил музыку">
+      <created>1678154404558</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678154404558</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,7 +318,8 @@
     <MESSAGE value="делал некий интерфейс" />
     <MESSAGE value="сделал некий интерфейс2" />
     <MESSAGE value="исправил от ошибок, вроде" />
-    <option name="LAST_COMMIT_MESSAGE" value="исправил от ошибок, вроде" />
+    <MESSAGE value="устранил большинство ошибок + добавил музыку" />
+    <option name="LAST_COMMIT_MESSAGE" value="устранил большинство ошибок + добавил музыку" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
