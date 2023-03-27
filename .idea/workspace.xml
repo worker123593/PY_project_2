@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="устранил большинство ошибок + добавил музыку" />
+    <list default="true" id="a363ad5f-21f7-416d-89dd-32187cef5b12" name="Changes" comment="добавил комменты">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678154451516</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="устранил большинство ошибок + добавил музыку">
+      <created>1678154811469</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678154811469</updated>
+    </task>
+    <task id="LOCAL-00008" summary="добавил комменты">
+      <created>1678154949387</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678154949387</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,7 +354,8 @@
     <MESSAGE value="сделал некий интерфейс2" />
     <MESSAGE value="исправил от ошибок, вроде" />
     <MESSAGE value="устранил большинство ошибок + добавил музыку" />
-    <option name="LAST_COMMIT_MESSAGE" value="устранил большинство ошибок + добавил музыку" />
+    <MESSAGE value="добавил комменты" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил комменты" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -350,17 +367,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/camera.py</url>
-          <line>30</line>
+          <line>31</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
-          <line>77</line>
+          <line>78</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exit_screensaver.py</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
